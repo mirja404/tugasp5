@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nama Toko</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Comic Neue', cursive;
+    background: linear-gradient(to bottom right, #FFF7D6, #FFE0E0);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, #FF6B6B, #FFD93D);
+    padding: 20px 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-bottom: 4px solid #333;
+  }
+
+  .header-content {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .store-name {
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 0 #333;
+    letter-spacing: 2px;
+  }
+
+  #search-input {
+    width: 260px;
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: 3px solid #333;
+    background: #fff8c4;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+  }
+
+  #search-input:focus {
+    border-color: #FF6B6B;
+    outline: none;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 60px auto 80px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .floating-img {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: float 3s ease-in-out infinite;
+    border: 4px solid #333;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .floating-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .shop-name {
+    font-size: 48px;
+    font-weight: bold;
+    color: #FF6B6B;
+    text-shadow: 2px 2px 0 #333;
+    margin-bottom: 10px;
+  }
+
+  .welcome-text {
+    font-size: 20px;
+    color: #444;
+    max-width: 600px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+  }
+
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+  }
+
+  .product-card {
+    background: #fff;
+    border: 4px solid #333;
+    border-radius: 20px;
+    box-shadow: 6px 6px 0 #333;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+  }
+
+  .product-card:hover {
+    transform: scale(1.03) rotate(-1deg);
+  }
+
+  .product-image-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+    background: #ffefef;
+  }
+
+  .product-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .price-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #FFD93D;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 12px;
+    border: 2px solid #333;
+    box-shadow: 2px 2px 0 #333;
+  }
+
+  .product-content {
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .product-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #FF6B6B;
+    text-shadow: 1px 1px 0 #333;
+    margin-bottom: 10px;
+  }
+
+  .product-description {
+    font-size: 15px;
+    color: #555;
+    flex-grow: 1;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .buy-button {
+    background: #FFD93D;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border: 3px solid #333;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 #333;
+    transition: 0.2s ease;
+  }
+
+  .buy-button:hover {
+    background: #FF6B6B;
+    color: #fff;
+    box-shadow: 2px 2px 0 #000;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-content">
+    <div class="store-name">Nama Toko</div>
+    <input type="search" id="search-input" placeholder="Cari Produk" />
+  </div>
+</header>
+
+<main class="container">
+  <div class="floating-img">
+    <img src="https://i.pinimg.com/736x/dd/5f/08/dd5f08202c2cba89df2b57c010de96f4.jpg" />
+  </div>
+  <h1 class="shop-name">Nekoo SHOP</h1>
+  <p class="welcome-text">
+    selamat datang di Nama Toko, silahkan pilih barang sesuai kebutuhan anda
+  </p>
+
+  <div class="product-list" id="product-list">
+    <!-- Produk dimuat di sini -->
+  </div>
+</main>
+
+<script>
+  const products = [
+    {
+      name: "Jasa Buka Enc Javascript",
+      description: "Buka encrypt file javascript kamu dengan cepat melalui jasa Nama Toko.",
+      price: "Rp 1.000.000",
+      image: "https://i.pinimg.com/736x/93/66/26/936626142997e0a182d46a22001f4a0b.jpg"
+    },
+    {
+      name: "Source Code WhatsApp Bot Premium",
+      description: "Source code WhatsApp Bot dengan fitur melimpah dan premium anti eror.",
+      price: "Rp 2.000.000",
+      image: "https://i.pinimg.com/736x/f8/83/34/f883346c1934caf0bffdd4b3f2a47be0.jpg"
+    },
+    {
+      name: "Jasa Pembuatan Website",
+      description: "Jasa pembuatan website, bebas request",
+      price: "Rp 3.000.000",
+      image: "https://i.pinimg.com/736x/f2/2d/2a/f22d2afa19665d3dcf1d1480f1f527c2.jpg"
+    }
+  ];
+
+  const productList = document.getElementById('product-list');
+
+  function renderProducts(products) {
+    productList.innerHTML = '';
+    products.forEach(prod => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+
+      card.innerHTML = `
+        <div class="product-image-wrapper">
+          <img src="${prod.image}" />
+          <div class="price-tag">${prod.price}</div>
+        </div>
+        <div class="product-content">
+          <h3 class="product-name">${prod.name}</h3>
+          <p class="product-description">${prod.description}</p>
+          <button class="buy-button" onclick="window.open('https://wa.me/6281234567890?text=Halo%20saya%20mau%20beli%20${encodeURIComponent(prod.name)}', '_blank')">Beli</button>
+        </div>
+      `;
+
+      productList.appendChild(card);
+    });
+  }
+
+  renderProducts(products);
+
+  document.getElementById('search-input').addEventListener('input', e => {
+    const keyword = e.target.value.toLowerCase();
+    const filtered = products.filter(p =>
+      p.name.toLowerCase().includes(keyword) ||
+      p.description.toLowerCase().includes(keyword)
+    );
+    renderProducts(filtered);
+  });
+</script>
+
+</body>
+</html>
